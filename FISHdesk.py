@@ -80,8 +80,9 @@ class DesktopPet:
         local_v = q*np.sin(c) + 39*d - 220
         centered_u = local_u - 200
         centered_v = -local_v + 220
-        cos_o = np.cos(self.pet_orientation_angle)
-        sin_o = np.sin(self.pet_orientation_angle)
+        angle_correction = -np.pi / 2 
+        cos_o = np.cos(self.pet_orientation_angle + angle_correction)
+        sin_o = np.sin(self.pet_orientation_angle + angle_correction)
         rotated_u = centered_u * cos_o - centered_v * sin_o
         rotated_v = centered_u * sin_o + centered_v * cos_o
         screen_u = rotated_u + self.pet_x
