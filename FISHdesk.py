@@ -38,6 +38,9 @@ class DesktopPet:
             win32gui.SetWindowLong(hwnd, win32con.GWL_EXSTYLE,
                                    win32gui.GetWindowLong(hwnd, win32con.GWL_EXSTYLE) | win32con.WS_EX_LAYERED)
             win32gui.SetLayeredWindowAttributes(hwnd, win32api.RGB(*TRANSPARENT_COLOR), 0, win32con.LWA_COLORKEY)
+            # 设置窗口为顶层窗口
+            win32gui.SetWindowPos(hwnd, win32con.HWND_TOPMOST, 0, 0, 0, 0,
+                                 win32con.SWP_NOMOVE | win32con.SWP_NOSIZE)
         else:
             self.screen.set_colorkey(TRANSPARENT_COLOR)
         self.clock = pygame.time.Clock()
